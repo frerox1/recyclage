@@ -77,6 +77,42 @@ export default function Home() {
           </Card>
         </div>
       </section>
+
+      {/* Canva Presentation Section */}
+      <section className="container mx-auto px-4 mb-20">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8 animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t("home.presentation.title")}
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              {t("home.presentation.subtitle")}
+            </p>
+          </div>
+          
+          <div className="relative animate-slide-up">
+            <div className="relative w-full h-0 pb-[56.25%] rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)] transition-all duration-500 bg-card border border-border/50">
+              <iframe
+                loading="lazy"
+                className="absolute w-full h-full top-0 left-0 border-0"
+                src="https://www.canva.com/design/DAG5CGlo4U8/e8TE7nOlF8W-8b7pUdDrPg/view?embed"
+                allowFullScreen
+                allow="fullscreen"
+              />
+            </div>
+            <div className="text-center mt-4">
+              <a
+                href="https://www.canva.com/design/DAG5CGlo4U8/e8TE7nOlF8W-8b7pUdDrPg/view?utm_content=DAG5CGlo4U8&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                How To Recycle Waste {t("home.presentation.by")} Yahia Ikni
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

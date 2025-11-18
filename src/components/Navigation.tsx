@@ -3,6 +3,7 @@ import { NavLink } from "@/components/NavLink";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Languages } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,19 +46,23 @@ export function Navigation() {
                 {t(item.key)}
               </NavLink>
             ))}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              className="gap-2"
-            >
-              <Languages className="w-4 h-4" />
-              {language.toUpperCase()}
-            </Button>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleLanguage}
+                className="gap-2"
+              >
+                <Languages className="w-4 h-4" />
+                {language.toUpperCase()}
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="sm"
