@@ -22,6 +22,11 @@ const translations = {
     "hero.subtitle": "Initiative de recyclage à l'École Maria - Ensemble pour une école plus verte",
     "hero.cta": "Découvrir le projet",
     
+    // Home Presentation
+    "home.presentation.title": "Comment recycler ?",
+    "home.presentation.subtitle": "Découvrez notre guide complet sur le recyclage",
+    "home.presentation.by": "par",
+    
     // Project
     "project.title": "Le Projet",
     "project.intro": "Notre programme de recyclage transforme l'École Maria en modèle de durabilité. Chaque jour, élèves et personnel participent activement au tri des déchets.",
@@ -77,6 +82,11 @@ const translations = {
     "hero.title": "A simple action for a cleaner future.",
     "hero.subtitle": "Recycling initiative at École Maria - Together for a greener school",
     "hero.cta": "Discover the project",
+    
+    // Home Presentation
+    "home.presentation.title": "How to Recycle?",
+    "home.presentation.subtitle": "Discover our complete guide on recycling",
+    "home.presentation.by": "by",
     
     // Project
     "project.title": "The Project",
