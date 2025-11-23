@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font display optimization for SEO */
-@font-face {
-  font-display: swap;
-}
-
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
