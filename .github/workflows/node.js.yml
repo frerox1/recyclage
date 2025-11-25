@@ -1,0 +1,36 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout du code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Installer Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      # 3️⃣ Installer les dépendances + vercel analytics
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install @vercel/analytics
+
+      # 4️⃣ Build le projet
+      - name: Build
+        run: npm run build
+
+      # 5️⃣ (Optionnel) Déploiement via Vercel CLI
+      # Assure-toi d'avoir défini VEREL_TOKEN dans les Secrets GitHub
+      - name: Deploy to Vercel
+        run: npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
