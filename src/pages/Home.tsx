@@ -5,22 +5,40 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import heroImage from "@/assets/ecole-maria-hero.webp";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   const { t } = useLanguage();
   const navigate = useNavigate();
   useScrollReveal();
   const [loadIframe, setLoadIframe] = useState(false);
+  const iframeContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Defer iframe loading until after initial page load
-    const timer = setTimeout(() => {
-      setLoadIframe(true);
-    }, 1000);
+    // Use Intersection Observer to load iframe only when it's about to be visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !loadIframe) {
+            setLoadIframe(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: '200px', // Start loading 200px before iframe comes into view
+        threshold: 0
+      }
+    );
 
-    return () => clearTimeout(timer);
-  }, []);
+    if (iframeContainerRef.current) {
+      observer.observe(iframeContainerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [loadIframe]);
 
   return (
     <div className="min-h-screen">
@@ -105,7 +123,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="relative scroll-reveal-delay-100">
+          <div className="relative scroll-reveal-delay-100" ref={iframeContainerRef}>
             <div className="relative w-full h-0 pb-[56.25%] rounded-lg sm:rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 bg-card border border-border/50 hover:border-primary/20 will-animate">
               {loadIframe ? (
                 <iframe
