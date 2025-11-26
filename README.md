@@ -1,73 +1,64 @@
-# Welcome to your Lovable project
+# Recyclage École Maria
 
-## Project info
+🌍 Site Web du projet « Recyclage École Maria » — initiative de sensibilisation et d’action autour du recyclage scolaire.
 
-**URL**: https://lovable.dev/projects/2d838250-3003-4067-abee-dfc73a4c7ff5
+## 🔧 Live  
+🔗 [https://recyclage.vercel.app](https://recyclage.vercel.app)
 
-## How can I edit this code?
+## 📬 Contact  
+✉️ Email : recyclagemaria@gmail.com
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🗂️ Structure du projet
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2d838250-3003-4067-abee-dfc73a4c7ff5) and start prompting.
+- `src/` — code source React + Tailwind + Vite  
+- `public/` — assets publics (images, logos...)  
+- `package.json` — liste des dépendances & scripts  
+- `README.md` — ce fichier  
+- `...` — autres dossiers ou fichiers selon l’organisation
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🚀 Scripts utiles
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+| Commande         |             Description                       |
+|------------------|-----------------------------------------------|
+| `npm run dev`    | Lancer le serveur de développement (local)    |
+| `npm run build`  | Compiler le projet en version production      |
+| `npm run preview`| Prévisualiser le build en local               |
+| `npm run lint`   | Vérifier le format / qualité du code (eslint) |
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## ✅ Technologies principales
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- ⚛️ React  
+- ⚡ Vite  
+- 🎨 Tailwind CSS  
+- 📦 Diverses bibliothèques UI & utilitaires (Radix, React‑Query, etc.)  
+- 📊 :contentReference[oaicite:0]{index=0} & :contentReference[oaicite:1]{index=1} — pour le suivi des visites et des performances
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 📝 À propos
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Ce site a été créé pour lancer l’initiative de recyclage à l’École Maria ; il a pour mission de sensibiliser, informer et offrir des ressources pour encourager le tri, la réduction des déchets et la protection de l’environnement dans le cadre scolaire.
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📄 Licence & Contribuer
 
-**Use GitHub Codespaces**
+- Tu peux contribuer en envoyant des Pull Requests — toute aide est bienvenue.  
+- Merci de ne **jamais** inclure de données sensibles (mots de passe, clés API...) dans les commits.  
+- Pour signaler un bug ou une suggestion, merci d’utiliser les **issues** du dépôt.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📞 Contact / Support
 
-This project is built with:
+Si tu as des questions, des idées ou des retours, tu peux nous écrire à :  
+✉️ recyclagemaria@gmail.com
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Merci d’utiliser et de faire vivre ce projet ! 🎉  
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2d838250-3003-4067-abee-dfc73a4c7ff5) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
