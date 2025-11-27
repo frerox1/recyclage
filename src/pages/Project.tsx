@@ -1,53 +1,55 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Trash2, FileText, Apple, Package, Target, Users, Lightbulb, TrendingUp, Leaf, Recycle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Project() {
+  const { t } = useLanguage();
   useScrollReveal();
 
   const bins = [
-    { icon: FileText, color: "text-amber-500", bg: "bg-amber-500/10", label: "Papier" },
-    { icon: Package, color: "text-blue-500", bg: "bg-blue-500/10", label: "Plastique" },
-    { icon: Trash2, color: "text-gray-500", bg: "bg-gray-500/10", label: "Métal" },
-    { icon: Apple, color: "text-green-500", bg: "bg-green-500/10", label: "Verre" },
+    { icon: FileText, color: "text-amber-500", bg: "bg-amber-500/10", label: t("project.bins.paper") },
+    { icon: Package, color: "text-blue-500", bg: "bg-blue-500/10", label: t("project.bins.plastic") },
+    { icon: Trash2, color: "text-gray-500", bg: "bg-gray-500/10", label: t("project.bins.metal") },
+    { icon: Apple, color: "text-green-500", bg: "bg-green-500/10", label: t("project.bins.organic") },
   ];
 
   const actions = [
     {
       icon: Recycle,
-      title: "Bacs de tri sélectif",
-      description: "L'école a installé des bacs de tri dans toutes les classes et espaces communs pour collecter séparément le papier, le plastique, le métal et le verre. Cette initiative permet de faciliter le recyclage et de réduire les déchets envoyés en décharge.",
+      title: t("project.bins.title"),
+      description: t("project.bins.text"),
       gradient: "from-blue-500/10 to-cyan-500/10",
       iconColor: "text-blue-500"
     },
     {
       icon: Lightbulb,
-      title: "Campagnes de sensibilisation",
-      description: "Des affiches, des présentations et des ateliers sont organisés régulièrement pour informer et éduquer les élèves et le personnel sur les bonnes pratiques environnementales.",
+      title: t("project.campaigns.title"),
+      description: t("project.campaigns.text"),
       gradient: "from-amber-500/10 to-orange-500/10",
       iconColor: "text-amber-500"
     },
     {
       icon: Users,
-      title: "Ateliers pédagogiques et créatifs",
-      description: "Les élèves participent à des activités où ils apprennent à réutiliser et transformer les matériaux recyclables en objets utiles ou artistiques, stimulant ainsi leur créativité tout en consolidant leur conscience écologique.",
+      title: t("project.workshops.title"),
+      description: t("project.workshops.text"),
       gradient: "from-purple-500/10 to-pink-500/10",
       iconColor: "text-purple-500"
     },
     {
       icon: TrendingUp,
-      title: "Suivi et évaluation",
-      description: "Des outils de suivi permettent de mesurer l'impact du projet, notamment en quantifiant les déchets collectés et recyclés, afin d'améliorer continuellement les actions mises en place.",
+      title: t("project.monitoring.title"),
+      description: t("project.monitoring.text"),
       gradient: "from-green-500/10 to-emerald-500/10",
       iconColor: "text-green-500"
     }
   ];
 
   const impacts = [
-    "Réduire l'empreinte écologique de l'école et de la communauté.",
-    "Former des citoyens responsables et engagés, conscients de l'importance de protéger la planète.",
-    "Créer un esprit collectif autour de la durabilité et du respect de l'environnement.",
-    "Encourager Agadir à devenir un exemple de ville écoresponsable à travers des actions concrètes menées par ses jeunes citoyens."
+    t("project.impact.1"),
+    t("project.impact.2"),
+    t("project.impact.3"),
+    t("project.impact.4")
   ];
 
   return (
@@ -57,13 +59,13 @@ export default function Project() {
         <div className="max-w-5xl mx-auto text-center mb-20 animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Leaf className="w-4 h-4" />
-            <span>Projet de Recyclage</span>
+            <span>{t("project.title")}</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-green-600 to-primary bg-clip-text text-transparent leading-tight">
-            L'École Maria s'engage pour l'environnement
+            École Maria - {t("project.title")}
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            L'École Maria, située à Agadir, s'engage activement pour la protection de l'environnement à travers son projet de recyclage. Ce projet a pour objectif de sensibiliser les élèves, le personnel et la communauté scolaire aux enjeux écologiques et de les inciter à adopter des comportements responsables pour un futur durable.
+            {t("project.intro")}
           </p>
         </div>
 
@@ -75,10 +77,10 @@ export default function Project() {
                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:bg-primary/30">
                   <Target className="w-6 h-6 text-primary transition-transform duration-500 group-hover:scale-110" />
                 </div>
-                <h2 className="text-3xl font-bold transition-colors duration-300 group-hover:text-primary">But du projet</h2>
+                <h2 className="text-3xl font-bold transition-colors duration-300 group-hover:text-primary">{t("project.goal.title")}</h2>
               </div>
               <p className="text-lg leading-relaxed text-foreground/90">
-                Le principal objectif est de <span className="font-semibold text-primary">protéger l'environnement</span> en réduisant les déchets, en promouvant le recyclage et en inculquant aux jeunes générations l'importance de préserver la planète. Il s'agit également de développer un <span className="font-semibold text-primary">sens civique et écologique</span> chez chaque élève, afin qu'il devienne un acteur conscient et responsable dans sa vie quotidienne.
+                {t("project.goal.text")}
               </p>
             </div>
           </Card>
@@ -107,9 +109,9 @@ export default function Project() {
 
         {/* Actions Section */}
         <div className="max-w-5xl mx-auto mb-20">
-          <h2 className="text-3xl font-bold text-center mb-4 scroll-reveal">Actions concrètes mises en place</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 scroll-reveal">{t("project.actions.title")}</h2>
           <p className="text-center text-muted-foreground mb-12 scroll-reveal">
-            Découvrez comment nous agissons au quotidien pour un avenir plus vert
+            {t("project.actions.subtitle") || "Découvrez comment nous agissons au quotidien pour un avenir plus vert"}
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {actions.map((action, index) => (
@@ -139,9 +141,9 @@ export default function Project() {
                 <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:bg-green-500/30">
                   <TrendingUp className="w-6 h-6 text-green-600 transition-transform duration-500 group-hover:scale-110" />
                 </div>
-                <h2 className="text-3xl font-bold transition-colors duration-300 group-hover:text-green-600">Impact attendu</h2>
+                <h2 className="text-3xl font-bold transition-colors duration-300 group-hover:text-green-600">{t("project.impact.title")}</h2>
               </div>
-              <p className="text-lg mb-6 text-muted-foreground">Ce projet vise à :</p>
+              <p className="text-lg mb-6 text-muted-foreground">{t("project.impact.text")}</p>
               <div className="space-y-4">
                 {impacts.map((impact, index) => (
                   <div
@@ -163,16 +165,16 @@ export default function Project() {
         <div className="max-w-4xl mx-auto text-center scroll-fade-right">
           <Card className="border-2 border-primary/30 shadow-2xl overflow-hidden hover:shadow-[0_0_60px_-15px_rgba(var(--primary),0.5)] transition-all duration-700 hover:scale-[1.03] group cursor-pointer">
             <div className="bg-gradient-to-br from-primary/20 via-green-500/20 to-primary/20 p-12 transition-all duration-700 group-hover:from-primary/30 group-hover:via-green-500/30 group-hover:to-primary/30">
-              <h2 className="text-4xl font-bold mb-6">Pourquoi participer ?</h2>
+              <h2 className="text-4xl font-bold mb-6">{t("project.why.title")}</h2>
               <p className="text-lg leading-relaxed mb-6">
-                Le recyclage n'est pas seulement une action écologique, c'est un <span className="font-semibold text-primary">choix de vie durable</span>. En s'impliquant dans ce projet, chaque élève devient un acteur du changement et contribue à un avenir plus propre et plus respectueux de l'environnement.
+                {t("project.why.text")}
               </p>
               <div className="bg-background/50 backdrop-blur-sm rounded-xl p-6 inline-block">
                 <p className="text-xl font-semibold text-primary mb-2">
-                  Rejoignez le mouvement !
+                  {t("project.why.join") || "Rejoignez le mouvement !"}
                 </p>
                 <p className="text-muted-foreground">
-                  L'École Maria invite tous ses élèves, enseignants et parents à rejoindre cette initiative et à faire partie d'un mouvement positif pour Agadir et notre planète.
+                  {t("project.why.invite") || "L'École Maria invite tous ses élèves, enseignants et parents à rejoindre cette initiative et à faire partie d'un mouvement positif pour Agadir et notre planète."}
                 </p>
               </div>
             </div>
