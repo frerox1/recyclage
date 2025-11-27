@@ -4,6 +4,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Bot, Maximize2, Minimize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,16 +17,25 @@ interface AIChatProps {
 
 export function AIChat({ open, onOpenChange }: AIChatProps) {
   const [isMaximized, setIsMaximized] = useState(false);
+  const [embedKey, setEmbedKey] = useState(0);
   const { theme } = useTheme();
 
   useEffect(() => {
-    if (open && !document.querySelector('script[src="https://studio.pickaxe.co/api/embed/bundle.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://studio.pickaxe.co/api/embed/bundle.js';
-      script.defer = true;
-      document.body.appendChild(script);
+    if (open) {
+      const existingScript = document.querySelector('script[src="https://studio.pickaxe.co/api/embed/bundle.js"]');
+      if (!existingScript) {
+        const script = document.createElement('script');
+        script.src = 'https://studio.pickaxe.co/api/embed/bundle.js';
+        script.defer = true;
+        script.onload = () => {
+          setEmbedKey(prev => prev + 1);
+        };
+        document.body.appendChild(script);
+      } else {
+        setEmbedKey(prev => prev + 1);
+      }
     }
-  }, [open]);
+  }, [open, theme]);
 
   const deploymentId = theme === 'dark' 
     ? 'deployment-afcd3047-9cd1-4849-bea0-4a67ad07f5ec'
@@ -40,7 +50,10 @@ export function AIChat({ open, onOpenChange }: AIChatProps) {
             : 'max-w-4xl w-full h-[85vh]'
         }`}
       >
-        <DialogHeader className="px-4 py-3 border-b flex-row items-center justify-between space-y-0 bg-background/95 backdrop-blur-sm shrink-0">
+        <DialogDescription className="sr-only">
+          AI Assistant for Maria School Recycling Project
+        </DialogDescription>
+        <DialogHeader className="px-4 py-3 border-b flex-row items-center justify-between space-y-0 bg-background/95 backdrop-blur-sm shrink-0 gap-3">
           <DialogTitle className="flex items-center gap-2 text-base">
             <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
               <Bot className="w-4 h-4 text-primary" />
@@ -54,7 +67,7 @@ export function AIChat({ open, onOpenChange }: AIChatProps) {
             variant="ghost"
             size="sm"
             onClick={() => setIsMaximized(!isMaximized)}
-            className="hover:bg-primary/10 transition-colors h-8 w-8 p-0"
+            className="hover:bg-primary/10 transition-colors h-8 w-8 p-0 shrink-0"
             title={isMaximized ? "Réduire" : "Agrandir"}
           >
             {isMaximized ? (
@@ -68,7 +81,7 @@ export function AIChat({ open, onOpenChange }: AIChatProps) {
           <div 
             id={deploymentId}
             className="w-full h-full"
-            key={deploymentId}
+            key={`${deploymentId}-${embedKey}`}
           />
         </div>
       </DialogContent>
